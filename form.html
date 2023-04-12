@@ -31,6 +31,11 @@
       margin: 16px 0;
       overflow: hidden;
     }
+
+    .hide {
+      display: none;
+
+    }
   </style>
 
 
@@ -64,7 +69,10 @@
     <h2>Prescription Details</h2>
     <form>
       <div id="form">
-        <div class="form-inline form-data medi">
+        <button class="btn btn-primary hide" id="add_btn" style="margin-bottom: 16px;"
+          onclick="addDetails('add_1', '1','0')">Add
+          Details</button>
+        <div id="pre_1" class="form-inline form-data ">
           <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
             <select class="form-control select2" style="width: 100%;">
               <option>Medicen</option>
@@ -130,11 +138,21 @@
     console.log('i global--->', i)
 
 
-    function addDetails(data, itteration) {
+    function addDetails(data, itteration, empty) {
+      event.preventDefault()
       console.log('data--->', data)
       console.log('itteration--->', itteration)
-      // checkDetails()
-      i = i + 1
+
+      if (empty == 0) {
+        i = 1
+      } else {
+        i = i + 1
+      }
+
+      if (i > 0) {
+        $("#add_btn").addClass("hide");
+      }
+
       console.error('Hey------>', i)
       $("#form").append(`<div id="pre_${i}" class="form-inline form-data">
           <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
@@ -190,12 +208,17 @@
     }
 
     function removeDetails(data, itteration) {
+      event.preventDefault();
       console.log(data, 'remove data---')
       console.log(itteration, 'remove itteration --->')
       console.error('remove--->', i)
+      console.error('iteration--------===', itteration)
       $(`#pre_${itteration}`).remove(``);
       i = i - 1;
       console.log('after remove i---->', i)
+      if (i == 0) {
+        $("#add_btn").removeClass("hide");
+      }
     }
 
 
