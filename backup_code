@@ -60,11 +60,30 @@
   <br> -->
   <!-- Append/Add and Remove HTML Elements: jQuery -->
 
+
+
+
+
+
+
+  <!-- 
+
+  <div id="button-group">
+    <button id="button-3">Button 3</button>
+    <button id="button-4">Button 4</button>
+    <button id="button-5">Button 5</button>
+  </div>
+
+  <div id="result"></div>
+ -->
+
+
+
   <div class="container">
     <h2>Prescription Details</h2>
     <form>
       <div id="form">
-        <div class="form-inline form-data medi">
+        <div class="form-inline form-data">
           <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
             <select class="form-control select2" style="width: 100%;">
               <option>Medicen</option>
@@ -100,16 +119,18 @@
           </div>
           <div class="form-group col-lg-2">
             <div class="input-group">
-              <span class="input-group-btn" id="add_1" onclick="addDetails('add_1', '1')">
-                <button type="button" class="btn" data-type="plus" data-field="">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" id="add_1">Add</button>
+                <!-- <button type=" button" class="btn" id="addDetails" data-type="plus" data-field="+">
                   <span class="glyphicon glyphicon-plus"></span>
-                </button>
+                </button> -->
               </span>
               &nbsp;
-              <span class="input-group-btn" id="remove_1" onclick="removeDetails('remove_1', '1')">
-                <button type="button" class="btn" data-type="minus" data-field="">
+              <span class="input-group-btn">
+                <button class="btn btn-success" id="remove_1">Remove</button>
+                <!-- <button type="button" class="btn" id="removeDetails" data-type="minus" data-field="-">
                   <span class="glyphicon glyphicon-minus"></span>
-                </button>
+                </button> -->
               </span>
               </span>
             </div>
@@ -127,16 +148,13 @@
 
     let i = 1;
     let id = 'pre';
+    let text
     console.log('i global--->', i)
 
-
-    function addDetails(data, itteration) {
-      console.log('data--->', data)
-      console.log('itteration--->', itteration)
-      // checkDetails()
+    function addDetails() {
       i = i + 1
       console.error('Hey------>', i)
-      $("#form").append(`<div id="pre_${i}" class="form-inline form-data">
+      $("#form").append(` <div id="pre_${i}" class="form-inline form-data">
           <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
             <select class="form-control select2" style="width: 100%;">
               <option>Medicen</option>
@@ -172,16 +190,12 @@
           </div>
           <div class="form-group col-lg-2">
             <div class="input-group">
-              <span class="input-group-btn" id="add_${i}" onclick="addDetails('add_${i}', ${i})">
-                <button type="button" class="btn" data-type="plus" data-field="">
-                  <span class="glyphicon glyphicon-plus"></span>
-                </button>
+              <span class="input-group-btn">
+                <button class="btn btn-primary" id="add_${i}">Add</button>
               </span>
               &nbsp;
-              <span class="input-group-btn" id="remove_${i}" onclick="removeDetails('remove_${i}', '${i}')">
-                <button type="button" class="btn data-type=" minus" data-field="">
-                  <span class="glyphicon glyphicon-minus"></span>
-                </button>
+              <span class="input-group-btn">
+                <button class="btn btn-success" id="remove_${i}">Remove</button>
               </span>
               </span>
             </div>
@@ -189,14 +203,50 @@
         </div>`);
     }
 
-    function removeDetails(data, itteration) {
-      console.log(data, 'remove data---')
-      console.log(itteration, 'remove itteration --->')
+    function removeDetails() {
       console.error('remove--->', i)
-      $(`#pre_${itteration}`).remove(``);
+      $(`#pre_${i}`).remove(``);
       i = i - 1;
       console.log('after remove i---->', i)
+
+
+
+      if (i == 0) {
+        alert('Add new details to delete');
+      }
     }
+
+
+    const buttons = document.getElementsByTagName("button");
+    const result = document.getElementById("result");
+
+    const buttonPressed = e => {
+      // e.preventDefault()
+      // result.innerHTML = `ID of <em>${e.target.innerHTML}</em> is <strong>${e.target.id}</strong>`;
+      console.log('Target ID---->', e.target.id);
+      text = e.target.id;
+      let add = text.match("add");
+
+      if (add !== null) {
+        e.preventDefault()
+        console.log('add----->', add);
+        //  addDetails();
+      } else {
+        let remove = text.match("remove")
+        if (remove !== '') {
+          console.log('remove----->', remove);
+          removeDetails();
+        } else {
+          console.log('Error in getting Button ID')
+        }
+
+      }
+    }
+
+    for (let button of buttons) {
+      button.addEventListener("click", buttonPressed);
+    }
+
 
 
     $('.select2').select2();
