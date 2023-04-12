@@ -9,32 +9,38 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+  <style>
+    .select2-container .select2-selection--single {
+      height: 34px !important;
+    }
+
+    .select2-container--default .select2-selection--single {
+      border: 1px solid #ccc;
+      /* border: 1px solid #ccc !important;
+      border-radius: 0px !important; */
+    }
+
+    .form-data {
+      margin: 16px 0;
+      overflow: hidden;
+    }
+  </style>
+
+
 </head>
 
 <body>
 
+  <!-- 
   <div class="container">
-    <div class="container">
-      <form>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-        </div>
-        <div class="form-group">
-          <label for="pwd">Password:</label>
-          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" name="remember"> Remember me</label>
-        </div>
-        <button type="submit" class="btn btn-default" onclick="myFunction()">Submit</button>
-      </form>
-    </div>
-
-
-    <!-- <div class="container">
-    <h2>Prescription Details</h2>
-    <form class="form-inline" action="/action_page.php">
+    <form>
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
@@ -46,73 +52,209 @@
       <div class="checkbox">
         <label><input type="checkbox" name="remember"> Remember me</label>
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-default" onclick="myFunction()">Submit</button>
     </form>
   </div> -->
 
-    <script>
+  <!-- <br>
+  <br> -->
+  <!-- Append/Add and Remove HTML Elements: jQuery -->
 
-      function myFunction() {
-        event.preventDefault();
-        let email = document.getElementById('email').value;
-        let password = document.getElementById('pwd').value;
-        console.log('email--->', email)
-        console.log('Password--->', password)
-
-        axios.get('https://reqres.in/api/users')
-          .then(function (response) {
-            // handle success
-            console.log(response);
-          })
-          .catch(function (error) {
-            // handle error
-            console.log(error);
-          })
-          .finally(function () {
-            // always executed
-          });
-
-
-        // let data = {
-        //   "sender": "sender_Value",
-        //   "data": {
-        //     "abc": "abc 10 1! !",
-        //     "email": email,
-        //     "password": password
-        //   }
-        // }
-
-
-        // let config = {
-        //   method: 'post',
-        //   url: `https://cloud.yellow.ai/integrations/sendevent/${args.event}/${botId}`, //surya raman >>  inter
-        //   headers: {
-        //     'content-type': 'application/json',
-        //     'authorization': token
-        //   },
-        //   data: {
-        //     "sender": `${app.sender}`,
-        //     "data": data
-        //   }
-        // };
-
-        // app.axios(config)
-        //   .then(function (response) {
-        //     app.log(response.data.data, `SUCCESS:  sendEventToCloud ${args.event}`);
-        //     return resolve();
-        //   })
-        //   .catch(function (error) {
-        //     app.log(error, 'ERROR: API sendEventToCloud');
-        //     return resolve();
-        //   });
-
-
-
-
-      }
+  <div class="container">
+    <h2>Prescription Details</h2>
+    <form>
+      <div id="form">
+        <div class="form-inline form-data medi">
+          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
+            <select class="form-control select2" style="width: 100%;">
+              <option>Medicen</option>
+              <option>Medicen1</option>
+              <option>Medicen2</option>
+              <option>Medicen3</option>
+              <option>Medicen4</option>
+              <option>Medicen5</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
+            <select class="form-control" style="width: 100%;">
+              <option>Intake Time</option>
+              <option>0 Morning-1 Noon-1 Night</option>
+              <option>1 Morning-0 Noon-0 Night</option>
+              <option>0 Morning-0 Noon-1 Night</option>
+              <option>1 Morning-0 Noon-1 Night</option>
+              <option>1 Morning-1 Noon-1 Night</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
+            <select class="form-control" style="width: 100%;">
+              <option>No. of days</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
+            <input type="text" class="form-control" id="inputCity" placeholder="comments">
+          </div>
+          <div class="form-group col-lg-2">
+            <div class="input-group">
+              <span class="input-group-btn" onclick="addDetails()">
+                <button type="button" class="btn" data-type="plus" data-field="">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+              </span>
+              &nbsp;
+              <span class="input-group-btn" onclick="removeDetails()">
+                <button type="button" class="btn" data-type="minus" data-field="">
+                  <span class="glyphicon glyphicon-minus"></span>
+                </button>
+              </span>
+              </span>
+            </div>
+          </div>
+        </div>
 
 
-    </script>
+      </div>
+
+      <button type="submit" class="btn btn-default col-md-4">Submit</button>
+    </form>
+  </div>
+
+  <script>
+
+    let i = 1;
+    let id = 'pre';
+    console.log('i global--->', i)
+
+    function addDetails() {
+      i = i + 1
+      console.error('Hey------>', i)
+      $("#form").append(`<div id="pre_${i}" class="form-inline form-data">
+          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
+            <select class="form-control select2" style="width: 100%;">
+              <option>Medicen</option>
+              <option>Medicen1</option>
+              <option>Medicen2</option>
+              <option>Medicen3</option>
+              <option>Medicen4</option>
+              <option>Medicen5</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
+            <select class="form-control" style="width: 100%;">
+              <option>Intake Time</option>
+              <option>0 Morning-1 Noon-1 Night</option>
+              <option>1 Morning-0 Noon-0 Night</option>
+              <option>0 Morning-0 Noon-1 Night</option>
+              <option>1 Morning-0 Noon-1 Night</option>
+              <option>1 Morning-1 Noon-1 Night</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
+            <select class="form-control" style="width: 100%;">
+              <option>No. of days</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
+            <input type="text" class="form-control" id="inputCity" placeholder="comments">
+          </div>
+          <div class="form-group col-lg-2">
+            <div class="input-group">
+              <span class="input-group-btn" onclick="addDetails()">
+                <button type="button" class="btn" data-type="plus" data-field="">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+              </span>
+              &nbsp;
+              <span class="input-group-btn" onclick="removeDetails()">
+                <button type="button" class="btn data-type=" minus" data-field="">
+                  <span class="glyphicon glyphicon-minus"></span>
+                </button>
+              </span>
+              </span>
+            </div>
+          </div>
+        </div>`);
+    }
+
+    function removeDetails() {
+      console.error('remove--->', i)
+      $(`#pre_${i}`).remove(``);
+      i = i - 1;
+      console.log('after remove i---->', i)
+    }
+
+
+    $('.select2').select2();
+    function myFunction() {
+      event.preventDefault();
+      let email = document.getElementById('email').value;
+      let password = document.getElementById('pwd').value;
+      console.log('email--->', email)
+      console.log('Password--->', password)
+
+      axios.get('https://reqres.in/api/users')
+        .then(function (response) {
+          // handle success
+          console.log(response);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .finally(function () {
+          // always executed
+        });
+
+
+      // let data = {
+      //   "sender": "sender_Value",
+      //   "data": {
+      //     "abc": "abc 10 1! !",
+      //     "email": email,
+      //     "password": password
+      //   }
+      // }
+
+
+      // let config = {
+      //   method: 'post',
+      //   url: `https://cloud.yellow.ai/integrations/sendevent/${args.event}/${botId}`, //surya raman >>  inter
+      //   headers: {
+      //     'content-type': 'application/json',
+      //     'authorization': token
+      //   },
+      //   data: {
+      //     "sender": `${app.sender}`,
+      //     "data": data
+      //   }
+      // };
+
+      // app.axios(config)
+      //   .then(function (response) {
+      //     app.log(response.data.data, `SUCCESS:  sendEventToCloud ${args.event}`);
+      //     return resolve();
+      //   })
+      //   .catch(function (error) {
+      //     app.log(error, 'ERROR: API sendEventToCloud');
+      //     return resolve();
+      //   });
+
+
+
+
+    }
+
+
+  </script>
 
 </body>
 
