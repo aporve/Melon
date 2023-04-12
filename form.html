@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Bootstrap Example</title>
+  <title>Melon Form</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -32,6 +32,24 @@
     </div>
 
 
+    <!-- <div class="container">
+    <h2>Prescription Details</h2>
+    <form class="form-inline" action="/action_page.php">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" name="remember"> Remember me</label>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div> -->
+
     <script>
 
       function myFunction() {
@@ -53,6 +71,44 @@
           .finally(function () {
             // always executed
           });
+
+
+        // let data = {
+        //   "sender": "sender_Value",
+        //   "data": {
+        //     "abc": "abc 10 1! !",
+        //     "email": email,
+        //     "password": password
+        //   }
+        // }
+
+
+        // let config = {
+        //   method: 'post',
+        //   url: `https://cloud.yellow.ai/integrations/sendevent/${args.event}/${botId}`, //surya raman >>  inter
+        //   headers: {
+        //     'content-type': 'application/json',
+        //     'authorization': token
+        //   },
+        //   data: {
+        //     "sender": `${app.sender}`,
+        //     "data": data
+        //   }
+        // };
+
+        // app.axios(config)
+        //   .then(function (response) {
+        //     app.log(response.data.data, `SUCCESS:  sendEventToCloud ${args.event}`);
+        //     return resolve();
+        //   })
+        //   .catch(function (error) {
+        //     app.log(error, 'ERROR: API sendEventToCloud');
+        //     return resolve();
+        //   });
+
+
+
+
       }
 
 
