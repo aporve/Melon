@@ -42,7 +42,7 @@
 </head>
 
 <body>
-
+  <p id="demo"></p>
 
   <div class="container">
     <form>
@@ -135,10 +135,28 @@
   </div> -->
 
   <script>
-
     let i = 1;
     let id = 'pre';
     console.log('i global--->', i)
+
+    // document.getElementById("demo").innerHTML = "The full URL of this page is:<br>" + window.location.href;
+
+    // const queryString = window.location.search;
+    // console.log(queryString);
+    // const urlParams = new URLSearchParams(queryString);
+    // const product = urlParams.get('product')
+    // console.log(product);
+    // // shirt
+
+    // const color = urlParams.get('color')
+    // console.log(color);
+    // // blue
+
+    // const newUser = urlParams.get('newuser')
+    // console.log(newUser);
+    // // empty string
+    // console.log(urlParams.getAll('size'));
+
 
 
     function addDetails(data, itteration, empty) {
@@ -233,52 +251,50 @@
       console.log('email--->', email)
       console.log('Password--->', password)
 
-      axios.get('https://reqres.in/api/users')
-        .then(function (response) {
-          // handle success
-          console.log(response);
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        })
-        .finally(function () {
-          // always executed
-        });
-
-
-      // let data = {
-      //   "sender": "sender_Value",
-      //   "data": {
-      //     "abc": "abc 10 1! !",
-      //     "email": email,
-      //     "password": password
-      //   }
-      // }
-
-
-      // let config = {
-      //   method: 'post',
-      //   url: `https://cloud.yellow.ai/integrations/sendevent/${args.event}/${botId}`, //surya raman >>  inter
-      //   headers: {
-      //     'content-type': 'application/json',
-      //     'authorization': token
-      //   },
-      //   data: {
-      //     "sender": `${app.sender}`,
-      //     "data": data
-      //   }
-      // };
-
-      // app.axios(config)
+      // axios.get('https://reqres.in/api/users')
       //   .then(function (response) {
-      //     app.log(response.data.data, `SUCCESS:  sendEventToCloud ${args.event}`);
-      //     return resolve();
+      //     // handle success
+      //     console.log(response);
       //   })
       //   .catch(function (error) {
-      //     app.log(error, 'ERROR: API sendEventToCloud');
-      //     return resolve();
+      //     // handle error
+      //     console.log(error);
+      //   })
+      //   .finally(function () {
+      //     // always executed
       //   });
+
+
+      let data = {
+        "sender": "sender_Value",
+        "data": {
+          "abc": "abc 10 1! !",
+          "email": email,
+          "password": password
+        }
+      }
+
+
+      let config = {
+        method: 'post',
+        url: `https://cloud.yellow.ai/integrations/sendevent/custom_ui_data/x1648436876601`,
+        headers: {
+          'content-type': 'application/json',
+          'authorization': 'a9c98447d597bcaabba1918fd576'
+        },
+        data: {
+          "sender": `5013796495391072`,
+          "data": data
+        }
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log(response.data.data, `SUCCESS:  sendEventToCloud custom_ui_data`);
+        })
+        .catch(function (error) {
+          console.log(error, 'ERROR: API sendEventToCloud');
+        });
 
 
 
