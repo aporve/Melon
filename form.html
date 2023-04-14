@@ -23,8 +23,6 @@
 
     .select2-container--default .select2-selection--single {
       border: 1px solid #ccc;
-      /* border: 1px solid #ccc !important;
-      border-radius: 0px !important; */
     }
 
     .form-data {
@@ -60,212 +58,18 @@
       <button type="submit" class="btn btn-default" onclick="myFunction()">Submit</button>
     </form>
   </div>
-
-  <!-- <br>
-  <br> -->
-
-
-
-
-
-  <!-- <div class="container">
-    <h2>Prescription Details</h2>
-    <form>
-      <div id="form">
-        <button class="btn btn-primary hide" id="add_btn" style="margin-bottom: 16px;"
-          onclick="addDetails('add_1', '1','0')">Add
-          Details</button>
-        <div id="pre_1" class="form-inline form-data ">
-          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
-            <select class="form-control select2" style="width: 100%;">
-              <option>Medicen</option>
-              <option>Medicen1</option>
-              <option>Medicen2</option>
-              <option>Medicen3</option>
-              <option>Medicen4</option>
-              <option>Medicen5</option>
-            </select>
-          </div>
-          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
-            <select class="form-control" style="width: 100%;">
-              <option>Intake Time</option>
-              <option>0 Morning-1 Noon-1 Night</option>
-              <option>1 Morning-0 Noon-0 Night</option>
-              <option>0 Morning-0 Noon-1 Night</option>
-              <option>1 Morning-0 Noon-1 Night</option>
-              <option>1 Morning-1 Noon-1 Night</option>
-            </select>
-          </div>
-          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
-            <select class="form-control" style="width: 100%;">
-              <option>No. of days</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </div>
-          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
-            <input type="text" class="form-control" id="inputCity" placeholder="comments">
-          </div>
-          <div class="form-group col-lg-2">
-            <div class="input-group">
-              <span class="input-group-btn" id="add_1" onclick="addDetails('add_1', '1')">
-                <button type="button" class="btn" data-type="plus" data-field="">
-                  <span class="glyphicon glyphicon-plus"></span>
-                </button>
-              </span>
-              &nbsp;
-              <span class="input-group-btn" id="remove_1" onclick="removeDetails('remove_1', '1')">
-                <button type="button" class="btn" data-type="minus" data-field="">
-                  <span class="glyphicon glyphicon-minus"></span>
-                </button>
-              </span>
-              </span>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-
-      <button type="submit" class="btn btn-default col-md-4">Submit</button>
-    </form>
-  </div> -->
-
   <script>
-    let i = 1;
-    let id = 'pre';
-    console.log('i global--->', i)
-
-    // document.getElementById("demo").innerHTML = "The full URL of this page is:<br>" + window.location.href;
-
-    // const queryString = window.location.search;
-    // console.log(queryString);
-    // const urlParams = new URLSearchParams(queryString);
-    // const product = urlParams.get('product')
-    // console.log(product);
-    // // shirt
-
-    // const color = urlParams.get('color')
-    // console.log(color);
-    // // blue
-
-    // const newUser = urlParams.get('newuser')
-    // console.log(newUser);
-    // // empty string
-    // console.log(urlParams.getAll('size'));
 
 
-
-    function addDetails(data, itteration, empty) {
-      event.preventDefault()
-      console.log('data--->', data)
-      console.log('itteration--->', itteration)
-
-      if (empty == 0) {
-        i = 1
-      } else {
-        i = i + 1
-      }
-
-      if (i > 0) {
-        $("#add_btn").addClass("hide");
-      }
-
-      console.error('Hey------>', i)
-      $("#form").append(`<div id="pre_${i}" class="form-inline form-data">
-          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
-            <select class="form-control select2" style="width: 100%;">
-              <option>Medicen</option>
-              <option>Medicen1</option>
-              <option>Medicen2</option>
-              <option>Medicen3</option>
-              <option>Medicen4</option>
-              <option>Medicen5</option>
-            </select>
-          </div>
-          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
-            <select class="form-control" style="width: 100%;">
-              <option>Intake Time</option>
-              <option>0 Morning-1 Noon-1 Night</option>
-              <option>1 Morning-0 Noon-0 Night</option>
-              <option>0 Morning-0 Noon-1 Night</option>
-              <option>1 Morning-0 Noon-1 Night</option>
-              <option>1 Morning-1 Noon-1 Night</option>
-            </select>
-          </div>
-          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
-            <select class="form-control" style="width: 100%;">
-              <option>No. of days</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </div>
-          <div class="form-group col-md-2" style="padding: 0; margin-right: 15px;">
-            <input type="text" class="form-control" id="inputCity" placeholder="comments">
-          </div>
-          <div class="form-group col-lg-2">
-            <div class="input-group">
-              <span class="input-group-btn" id="add_${i}" onclick="addDetails('add_${i}', ${i})">
-                <button type="button" class="btn" data-type="plus" data-field="">
-                  <span class="glyphicon glyphicon-plus"></span>
-                </button>
-              </span>
-              &nbsp;
-              <span class="input-group-btn" id="remove_${i}" onclick="removeDetails('remove_${i}', '${i}')">
-                <button type="button" class="btn data-type=" minus" data-field="">
-                  <span class="glyphicon glyphicon-minus"></span>
-                </button>
-              </span>
-              </span>
-            </div>
-          </div>
-        </div>`);
-    }
-
-    function removeDetails(data, itteration) {
-      event.preventDefault();
-      console.log(data, 'remove data---')
-      console.log(itteration, 'remove itteration --->')
-      console.error('remove--->', i)
-      console.error('iteration--------===', itteration)
-      $(`#pre_${itteration}`).remove(``);
-      i = i - 1;
-      console.log('after remove i---->', i)
-      if (i == 0) {
-        $("#add_btn").removeClass("hide");
-      }
-    }
-
-
-    $('.select2').select2();
     function myFunction() {
       event.preventDefault();
       let email = document.getElementById('email').value;
       let password = document.getElementById('pwd').value;
       console.log('email--->', email)
-      console.log('Password--->', password)
-
-      // axios.get('https://reqres.in/api/users')
-      //   .then(function (response) {
-      //     // handle success
-      //     console.log(response);
-      //   })
-      //   .catch(function (error) {
-      //     // handle error
-      //     console.log(error);
-      //   })
-      //   .finally(function () {
-      //     // always executed
-      //   });
+      console.log('Password--->', password);
 
 
-      let data = {
+      let userData = {
         "sender": "sender_Value",
         "data": {
           "abc": "abc 10 1! !",
@@ -277,19 +81,24 @@
 
       let config = {
         method: 'post',
-        url: `https://cloud.yellow.ai/integrations/sendevent/custom_ui_data/x1648436876601`,
+        mode: 'cors',
+        url: `https://cloud.yellow.ai/integrations/sendevent/custom_ui_data/x1648436876601?source=facebook`,
         headers: {
-          'content-type': 'application/json',
-          'authorization': 'a9c98447d597bcaabba1918fd576'
+          'Content-Type': 'application/json',
+          'Authorization': 'a9c98447d597bcaabba1918fd576',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE',
+          'Access-Control-Allow-Methods': 'Content-Type,Authorization'
         },
         data: {
           "sender": `5013796495391072`,
-          "data": data
+          "data": userData
         }
       };
 
       axios(config)
         .then(function (response) {
+          alert('hey--->')
           console.log(response.data.data, `SUCCESS:  sendEventToCloud custom_ui_data`);
         })
         .catch(function (error) {
